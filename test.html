@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiện nội dung và phát nhạc</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+        #content {
+            display: none;
+            margin-top: 20px;
+        }
+        video, audio {
+            width: 80%;
+            max-width: 700px;
+            margin-top: 20px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chào mừng đến với trang video</h1>
+    <button id="showContent">Hiện nội dung & Phát nhạc</button>
+    
+    <div id="content">
+        <h2>Chúc bạn một ngày tuyệt vời!</h2>
+        <video controls autoplay loop muted>
+            <source src="" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+        <audio id="backgroundMusic" loop>
+            <source src="./images/audio.mp3" type="audio/mp3">
+            Trình duyệt của bạn không hỗ trợ âm thanh.
+        </audio>
+    </div>
+
+    <script>
+        const button = document.getElementById('showContent');
+        const content = document.getElementById('content');
+        const audio = document.getElementById('backgroundMusic');
+
+        button.addEventListener('click', () => {
+            content.style.display = 'block';
+            audio.play().catch(error => {
+                console.error('Không thể phát nhạc:', error);
+            });
+        });
+    </script>
+</body>
+</html>
